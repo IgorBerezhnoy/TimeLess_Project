@@ -5,6 +5,9 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@fontsource-variable/jura':
+    specifier: ^5.0.20
+    version: 5.0.20
   clsx:
     specifier: ^2.1.1
     version: 2.1.1
@@ -573,6 +576,10 @@ packages:
     resolution: {integrity: sha512-Ys+3g2TaW7gADOJzPt83SJtCDhMjndcDMFVQ/Tj9iA1BfJzFKD9mAUXT3OenpuPHbI6P/myECxRJrofUsDx/5g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dev: true
+
+  /@fontsource-variable/jura@5.0.20:
+    resolution: {integrity: sha512-k5EwXTH4mdaL7OpO2p7IrL1/0DT8b4z1SucZs6e5vIvdn+OJwqTuNKGUu7Z9Wdwodw6NkLgJmidK2Ps2LIj8xQ==}
+    dev: false
 
   /@humanwhocodes/config-array@0.11.14:
     resolution: {integrity: sha512-3T8LkOmg45BV5FICb15QQMsyUSWrQ8AygVfC7ZG32zOalnqrilm018ZVCw0eapXux8FtA33q8PSRSstjee3jSg==}
