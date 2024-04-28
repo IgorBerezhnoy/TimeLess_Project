@@ -4,8 +4,7 @@ import { App } from '@/App'
 import ReactDOM from 'react-dom/client'
 
 import './styles/index.scss'
-import '@fontsource/roboto/500.css'
-import '@fontsource/roboto/600.css'
+import '@fontsource-variable/jura'
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
