@@ -1,0 +1,22 @@
+.refetch {
+cursor: pointer;
+
+  height: 20px;
+
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 20px;
+  color: var(--color-red);
+
+  background: transparent;
+  border: none;
+
+&:hover {
+  text-decoration: underline;
+  opacity: 0.7;
+}
+
+  &:active{
+	color: #9F3834FF;
+  }
+}

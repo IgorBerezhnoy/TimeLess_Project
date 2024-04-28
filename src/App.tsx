@@ -1,13 +1,13 @@
-import { TextField } from '@/components/textField'
+import { SearchHeader } from '@/components/searchHeader'
 import { UserList } from '@/components/userList'
 import { useGetUsersQuery } from '@/services/userApi/user-api.service'
 
 import '../src/styles/index.scss'
 
 export function App() {
-  const { data, isError, isLoading } = useGetUsersQuery('10')
+  const { data, isError, isFetching, refetch } = useGetUsersQuery('11')
 
-  if (isLoading) {
+  if (isFetching) {
     return <div>Loading...</div>
   }
   if (isError) {
@@ -16,7 +16,7 @@ export function App() {
 
   return (
     <div>
-      <TextField placeholder={'Search'} />
+      <SearchHeader refetch={refetch} />
       {data && <UserList users={data.results} />}
     </div>
   )
