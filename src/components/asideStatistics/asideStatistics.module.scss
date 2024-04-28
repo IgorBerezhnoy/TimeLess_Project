@@ -1,0 +1,46 @@
+.wrapper {
+  width: 332px;
+  height: 90vh;
+  padding: 24px;
+}
+
+.title {
+  margin-bottom: 16px;
+  padding-top: 24px;
+  border-top: 1px solid #303238;
+}
+
+.category {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.group {
+  width: 128px;
+  margin-bottom: 24px;
+}
+
+.count {
+  margin-bottom: 24px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 24px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.left {
+  font-size: 12px;
+  line-height: 20px;
+  color: var(--second-font-color);
+}
+
+.right {
+  font-size: 14px;
+  line-height: 20px;
+}

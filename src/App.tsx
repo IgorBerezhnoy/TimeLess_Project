@@ -1,11 +1,11 @@
 import { SearchHeader } from '@/components/searchHeader'
-import { UserList } from '@/components/userList'
+import { MainPage } from '@/page/main-page/main-page'
 import { useGetUsersQuery } from '@/services/userApi/user-api.service'
 
 import '../src/styles/index.scss'
 
 export function App() {
-  const { data, isError, isFetching, refetch } = useGetUsersQuery('11')
+  const { data, isError, isFetching, refetch } = useGetUsersQuery('10')
 
   if (isFetching) {
     return <div>Loading...</div>
@@ -17,7 +17,7 @@ export function App() {
   return (
     <div>
       <SearchHeader refetch={refetch} />
-      {data && <UserList users={data.results} />}
+      {data && <MainPage users={data.results} />}
     </div>
   )
 }
