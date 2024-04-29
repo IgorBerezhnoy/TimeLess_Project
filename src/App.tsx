@@ -1,11 +1,16 @@
 import { SearchHeader } from '@/components/searchHeader'
-import { MainPage } from '@/page/main-page/main-page'
+import { useAppDispatch } from '@/hooks/use-appDispatch'
+import { MainPageContainer } from '@/page/main-page/main-page-container'
 import { useGetUsersQuery } from '@/services/userApi/user-api.service'
+import { setUsers } from '@/services/usersSlise/users.slice'
 
 import '../src/styles/index.scss'
 
 export function App() {
   const { data, isError, isFetching, refetch } = useGetUsersQuery('10')
+  const dispatch = useAppDispatch()
+
+  dispatch(setUsers({ users: data?.results ?? [] }))
 
   if (isFetching) {
     return <div>Loading...</div>
@@ -17,7 +22,7 @@ export function App() {
   return (
     <div>
       <SearchHeader refetch={refetch} />
-      {data && <MainPage users={data.results} />}
+      <MainPageContainer />
     </div>
   )
 }

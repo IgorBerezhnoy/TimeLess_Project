@@ -4,11 +4,11 @@
   gap: 16px;
   align-content: flex-start;
 
-  margin-top: 24px
+  width: 1376px;
 }
 
 @media (width < 768px) {
   .userList {
-	justify-content: center;
+    justify-content: center;
   }
 }

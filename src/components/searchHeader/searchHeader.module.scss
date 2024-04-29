@@ -1,5 +1,8 @@
 .wrapper{
   display: flex;
-  align-items: center;
+  align-items: stretch;
   justify-content: space-between;
+
+  max-width: 1400px;
+  margin: 0 auto 24px;
 }
