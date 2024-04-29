@@ -1,6 +1,18 @@
 body {
   padding: 32px;
-  font-family:  'Jura Variable', sans-serif;
+  font-family: 'Jura Variable', sans-serif;
   color: var(--main-font-color);
   background: var(--color-main-bg);
+}
+
+@media (width < 768px) {
+  body {
+    padding: 15px;
+  }
+}
+
+@media (width < 420px) {
+  body {
+    padding: 5px;
+  }
 }

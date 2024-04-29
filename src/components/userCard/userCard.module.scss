@@ -53,3 +53,9 @@
 .infoCell {
   margin-top: 12px;
 }
+
+@media (width < 768px) {
+  .profileCard {
+	  width: 320px;
+  }
+}

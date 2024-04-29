@@ -44,3 +44,9 @@
   font-size: 14px;
   line-height: 20px;
 }
+
+@media (width < 800px) {
+  .wrapper {
+	display: none;
+  }
+}

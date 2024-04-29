@@ -6,3 +6,9 @@
 
   margin-top: 24px
 }
+
+@media (width < 768px) {
+  .userList {
+	justify-content: center;
+  }
+}
