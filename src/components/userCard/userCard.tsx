@@ -1,10 +1,10 @@
 import { memo } from 'react'
 
-import { TrashIcon } from '@/assets/icons'
 import { CardBg } from '@/components/cardBg'
+import { DeleteUserCard } from '@/components/userCard/lib/deleteUserCard'
+import { ProfileImageContainerUserCard } from '@/components/userCard/lib/profileImageContainerUserCard'
+import { ProfileInfoUserCard } from '@/components/userCard/lib/profileInfoUserCard'
 import { UserType } from '@/services/userApi/user-api.types'
-import { changeOnDots } from '@/utils/changeOnDots'
-import { formatDate } from '@/utils/formatDate'
 import { clsx } from 'clsx'
 
 import s from './userCard.module.scss'
@@ -21,40 +21,14 @@ export const UserCard = memo(
         className={clsx(s.profileCard, activeCard && s.activeCard)}
         onClick={onClickSetActive}
       >
-        {activeCard && (
-          <div className={s.trash} onClick={deleteUser}>
-            <TrashIcon className={s.icon} />
-          </div>
-        )}
-        <div className={s.profileImageContainer}>
-          <img
-            alt={`image of ${name.first} ${name.last}`}
-            className={s.profileImage}
-            src={picture.thumbnail}
-          />
-          <div>
-            <div className={clsx(s.name, activeCard && s.active)}>
-              {name.first} {name.last}
-            </div>
-            <div className={s.email}>{changeOnDots(email, 30)}</div>
-          </div>
-        </div>
-        <div className={s.profileInfo}>
-          <div className={s.infoCell}>
-            <span className={s.left}>Phone No: </span>
-            <span className={s.right}>{phone}</span>
-          </div>
-          <div className={s.infoCell}>
-            <span className={s.left}>Birthday: </span>
-            <span className={s.right}>{formatDate(dob.date)}</span>
-          </div>
-          <div className={s.infoCell}>
-            <span className={s.left}>Address:</span>
-            <span className={s.right}>
-              {changeOnDots(`${location.city}, ${location.country}`, 30)}
-            </span>
-          </div>
-        </div>
+        {activeCard && <DeleteUserCard deleteUser={deleteUser} />}
+        <ProfileImageContainerUserCard
+          activeCard={activeCard}
+          email={email}
+          name={name}
+          picture={picture}
+        />
+        <ProfileInfoUserCard dob={dob} location={location} phone={phone} />
       </CardBg>
     )
   }

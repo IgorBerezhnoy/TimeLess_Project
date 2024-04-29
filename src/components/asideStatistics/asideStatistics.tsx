@@ -1,54 +1,27 @@
+import { memo } from 'react'
+
+import { AgeGroupStatistics } from '@/components/asideStatistics/lib/ageGroupStatistics'
+import { GenderGroupsStatistics } from '@/components/asideStatistics/lib/genderGroupsStatistics'
 import { CardBg } from '@/components/cardBg'
-import { gender, sortCategory } from '@/constants/sortCategory'
-import { pluralize } from '@/utils/pluralize'
 
 import s from './asideStatistics.module.scss'
 
-export const AsideStatistics = ({
-  age10to20,
-  age21to30,
-  age31to40,
-  age41to50,
-  count,
-  female,
-  male,
-  more51,
-}: Props) => {
-  const ageGroups = [age10to20, age21to30, age31to40, age41to50, more51]
-  const genderGroups = [male, female]
+export const AsideStatistics = memo(
+  ({ age10to20, age21to30, age31to40, age41to50, count, female, male, more51 }: Props) => {
+    const ageGroups = [age10to20, age21to30, age31to40, age41to50, more51]
+    const genderGroups = [male, female]
 
-  return (
-    <aside>
-      <CardBg className={s.wrapper}>
-        <div className={s.aa}>
+    return (
+      <aside>
+        <CardBg className={s.wrapper}>
           <div className={s.count}> {count} Users</div>
-          <div className={s.age}>
-            <div className={s.title}>Age Groups</div>
-            <div className={s.group}>
-              {ageGroups.map((el, i) => (
-                <div className={s.category} key={i}>
-                  <span className={s.left}>{sortCategory[i]}</span>
-                  <span className={s.right}>{pluralize(el)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-          <div className={s.gender}>
-            <div className={s.title}>Gender Groups</div>
-            <div className={s.group}>
-              {genderGroups.map((el, i) => (
-                <div className={s.category} key={i}>
-                  <span className={s.left}>{gender[i]}</span>
-                  <span className={s.right}>{pluralize(el)}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </CardBg>
-    </aside>
-  )
-}
+          <AgeGroupStatistics ageGroups={ageGroups} />
+          <GenderGroupsStatistics genderGroups={genderGroups} />
+        </CardBg>
+      </aside>
+    )
+  }
+)
 
 type Props = {
   age10to20: number
