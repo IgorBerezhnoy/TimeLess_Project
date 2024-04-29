@@ -1,6 +1,6 @@
 import { SearchHeader } from '@/components/searchHeader'
 import { useAppDispatch } from '@/hooks/use-appDispatch'
-import { MainPageContainer } from '@/page/main-page/main-page-container'
+import { MainPage } from '@/page/main-page/main-page'
 import { useGetUsersQuery } from '@/services/userApi/user-api.service'
 import { setUsers } from '@/services/usersSlise/users.slice'
 
@@ -22,7 +22,7 @@ export function App() {
   return (
     <div>
       <SearchHeader refetch={refetch} />
-      <MainPageContainer />
+      <MainPage />
     </div>
   )
 }

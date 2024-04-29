@@ -9,16 +9,14 @@ import s from './userCard.module.scss'
 
 export const UserCard = ({
   activeCard,
+  deleteUser,
   onClickSetActive,
-  user: { dob, email, location, login, name, phone, picture },
+  user: { dob, email, location, name, phone, picture },
 }: Props) => {
   return (
-    <CardBg
-      className={clsx(s.profileCard, activeCard && s.activeCard)}
-      onClick={() => onClickSetActive(login.uuid)}
-    >
+    <CardBg className={clsx(s.profileCard, activeCard && s.activeCard)} onClick={onClickSetActive}>
       {activeCard && (
-        <div className={s.trash}>
+        <div className={s.trash} onClick={deleteUser}>
           <TrashIcon className={s.icon} />
         </div>
       )}
@@ -57,6 +55,7 @@ export const UserCard = ({
 
 type Props = {
   activeCard: boolean
-  onClickSetActive: (id: string) => void
+  deleteUser: () => void
+  onClickSetActive: () => void
   user: UserType
 }

@@ -11,7 +11,8 @@ const slice = createSlice({
   name: 'users',
   reducers: {
     deleteUser(state, action: PayloadAction<{ id: string }>) {
-      state.users = state.users.filter(el => el.login.uuid !== action.payload.id)
+      state.filteredUsers = state.filteredUsers.filter(el => el.login.uuid !== action.payload.id)
+      state.users = state.filteredUsers.filter(el => el.login.uuid !== action.payload.id)
     },
     searchUser(state, action: PayloadAction<{ search: string }>) {
       state.filteredUsers = state.users.filter(
@@ -31,7 +32,8 @@ const slice = createSlice({
   },
 })
 
-export const selectUsers = (state: RootState) => state.users.filteredUsers
+export const selectFilterUsers = (state: RootState) => state.users.filteredUsers
+export const selectUsers = (state: RootState) => state.users.users
 
 export const usersReducer = slice.reducer
 export const { deleteUser, searchUser, setUsers } = slice.actions

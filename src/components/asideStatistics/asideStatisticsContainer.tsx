@@ -1,10 +1,12 @@
+import { useSelector } from 'react-redux'
+
 import { AsideStatistics } from '@/components/asideStatistics/asideStatistics'
 import { getStatistics } from '@/components/asideStatistics/lib/getStatistics'
-import { UserType } from '@/services/userApi/user-api.types'
+import { selectUsers } from '@/services/usersSlise/users.slice'
 
-export const AsideStatisticsContainer = ({ users }: Props) => {
+export const AsideStatisticsContainer = () => {
+  const users = useSelector(selectUsers)
   const statistic = getStatistics(users)
 
   return <AsideStatistics {...statistic} />
 }
-type Props = { users: UserType[] }
