@@ -1,4 +1,4 @@
-import { DetailedHTMLProps, ElementRef, InputHTMLAttributes, JSX, forwardRef } from 'react'
+import { DetailedHTMLProps, ElementRef, InputHTMLAttributes, JSX, forwardRef, memo } from 'react'
 
 import { clsx } from 'clsx'
 
@@ -12,7 +12,9 @@ export interface TextFieldProps
 }
 
 export const TextField = forwardRef<ElementRef<'input'>, TextFieldProps>(
-  ({ className, classNameWrapper, disabled, errorMessage, label, ...rest }, ref): JSX.Element => {
-    return <input className={clsx(s.input, className)} {...rest} ref={ref} />
-  }
+  memo(
+    ({ className, classNameWrapper, disabled, errorMessage, label, ...rest }, ref): JSX.Element => {
+      return <input className={clsx(s.input, className)} {...rest} ref={ref} />
+    }
+  )
 )

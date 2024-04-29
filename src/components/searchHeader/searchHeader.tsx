@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react'
+import { ChangeEvent, memo, useCallback, useState } from 'react'
 
 import { DebouncedInput } from '@/components/debounce'
 import { RefreshButton } from '@/components/refreshButton'
@@ -7,15 +7,21 @@ import { searchUser } from '@/services/usersSlise/users.slice'
 
 import s from './searchHeader.module.scss'
 
-export const SearchHeader = ({ refetch }: Props) => {
+export const SearchHeader = memo(({ refetch }: Props) => {
   const dispatch = useAppDispatch()
   const [search, setSearch] = useState<string>('')
-  const onChange = (event: ChangeEvent<HTMLInputElement>) => {
-    setSearch(event.currentTarget.value)
-  }
-  const onDebouncedChange = (value: string) => {
-    dispatch(searchUser({ search: value }))
-  }
+  const onChange = useCallback(
+    (event: ChangeEvent<HTMLInputElement>) => {
+      setSearch(event.currentTarget.value)
+    },
+    [setSearch]
+  )
+  const onDebouncedChange = useCallback(
+    (value: string) => {
+      dispatch(searchUser({ search: value }))
+    },
+    [dispatch, search]
+  )
 
   return (
     <div className={s.wrapper}>
@@ -30,7 +36,7 @@ export const SearchHeader = ({ refetch }: Props) => {
       </div>
     </div>
   )
-}
+})
 
 type Props = {
   refetch: () => void

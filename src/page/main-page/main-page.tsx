@@ -1,13 +1,15 @@
+import { memo } from 'react'
+
 import { AsideStatisticsContainer } from '@/components/asideStatistics/asideStatisticsContainer'
-import { UserList } from '@/components/userList'
+import { UserListContainer } from '@/components/userList'
 
 import s from './main-page.module.scss'
 
-export const MainPage = () => {
+export const MainPage = memo(() => {
   return (
     <div className={s.wrapper}>
-      <UserList />
+      <UserListContainer />
       <AsideStatisticsContainer />
     </div>
   )
-}
+})

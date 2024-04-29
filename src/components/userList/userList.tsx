@@ -1,39 +1,30 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { memo } from 'react'
 
 import { UserCard } from '@/components/userCard'
-import { useAppDispatch } from '@/hooks/use-appDispatch'
-import { deleteUser, selectFilterUsers } from '@/services/usersSlise/users.slice'
+import { UserType } from '@/services/userApi/user-api.types'
 
-import s from './userList.module.scss'
+import s from '@/components/userList/userList.module.scss'
 
-export const UserList = () => {
-  const users = useSelector(selectFilterUsers)
-  const [activeCard, setActiveCard] = useState<string>('')
-  const dispatch = useAppDispatch()
-  const onClickSetActive = (id: string) => {
-    if (activeCard === id) {
-      setActiveCard('')
-
-      return
-    }
-    setActiveCard(id)
+export const UserList = memo(
+  ({ activeCard, deleteUserHandler, onClickSetActive, users }: Props) => {
+    return (
+      <div className={s.userList}>
+        {users.map(el => (
+          <UserCard
+            activeCard={activeCard === el.login.uuid}
+            deleteUser={() => deleteUserHandler(el.login.uuid)}
+            key={el.login.uuid}
+            onClickSetActive={() => onClickSetActive(el.login.uuid)}
+            user={el}
+          />
+        ))}
+      </div>
+    )
   }
-  const deleteUserHandler = (id: string) => {
-    dispatch(deleteUser({ id }))
-  }
-
-  return (
-    <div className={s.userList}>
-      {users.map(el => (
-        <UserCard
-          activeCard={activeCard === el.login.uuid}
-          deleteUser={() => deleteUserHandler(el.login.uuid)}
-          key={el.login.uuid}
-          onClickSetActive={() => onClickSetActive(el.login.uuid)}
-          user={el}
-        />
-      ))}
-    </div>
-  )
+)
+type Props = {
+  activeCard: string
+  deleteUserHandler: (id: string) => void
+  onClickSetActive: (id: string) => void
+  users: UserType[]
 }
