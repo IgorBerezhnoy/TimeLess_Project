@@ -1,7 +1,21 @@
 .profileCard {
+  cursor: pointer;
+
+  position: relative;
+
   width: 332px;
   height: 196px;
   padding: 20px;
+
+  &:hover {
+    transform: scale(1.05);
+    transition: all 0.5s;
+  }
+}
+
+.activeCard {
+  background: #1E2027;
+  border: 1px solid #ff2c4733;
 }
 
 .profileImageContainer {
@@ -19,6 +33,11 @@
   font-size: 20px;
   font-weight: 600;
   line-height: 24px;
+  transition: all 0.3s;
+}
+
+.active {
+  color: var(--color-red);
 }
 
 .email {
@@ -54,8 +73,28 @@
   margin-top: 12px;
 }
 
+.trash {
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 44px;
+  height: 44px;
+
+  border: 1px solid #ff2c4733;
+  border-radius: 0 16px;
+}
+
+.icon {
+  color: var(--color-red);
+}
+
 @media (width < 768px) {
   .profileCard {
-	  width: 320px;
+    width: 320px;
   }
 }

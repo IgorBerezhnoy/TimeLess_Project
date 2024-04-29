@@ -1,3 +1,4 @@
+import { TrashIcon } from '@/assets/icons'
 import { CardBg } from '@/components/cardBg'
 import { UserType } from '@/services/userApi/user-api.types'
 import { changeOnDots } from '@/utils/changeOnDots'
@@ -6,9 +7,21 @@ import { clsx } from 'clsx'
 
 import s from './userCard.module.scss'
 
-export const UserCard = ({ user: { dob, email, location, name, phone, picture } }: Props) => {
+export const UserCard = ({
+  activeCard,
+  onClickSetActive,
+  user: { dob, email, location, login, name, phone, picture },
+}: Props) => {
   return (
-    <CardBg className={clsx(s.profileCard)}>
+    <CardBg
+      className={clsx(s.profileCard, activeCard && s.activeCard)}
+      onClick={() => onClickSetActive(login.uuid)}
+    >
+      {activeCard && (
+        <div className={s.trash}>
+          <TrashIcon className={s.icon} />
+        </div>
+      )}
       <div className={s.profileImageContainer}>
         <img
           alt={'image of ${name.first} ${name.last}'}
@@ -16,7 +29,7 @@ export const UserCard = ({ user: { dob, email, location, name, phone, picture } 
           src={picture.thumbnail}
         />
         <div>
-          <div className={s.name}>
+          <div className={clsx(s.name, activeCard && s.active)}>
             {name.first} {name.last}
           </div>
           <div className={s.email}>{changeOnDots(email, 30)}</div>
@@ -43,5 +56,7 @@ export const UserCard = ({ user: { dob, email, location, name, phone, picture } 
 }
 
 type Props = {
+  activeCard: boolean
+  onClickSetActive: (id: string) => void
   user: UserType
 }
