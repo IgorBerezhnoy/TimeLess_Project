@@ -21,6 +21,7 @@ const slice = createSlice({
           el.name.last.includes(action.payload.search) ||
           el.dob.age.toString().includes(action.payload.search) ||
           el.email.includes(action.payload.search) ||
+          el.phone.includes(action.payload.search) ||
           el.login.username.includes(action.payload.search) ||
           el.location.country.includes(action.payload.search) ||
           el.location.city.includes(action.payload.search)

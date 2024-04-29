@@ -11,11 +11,11 @@ export function useCustomScrollDiv() {
 
   const handleMouseOver = useCallback(() => {
     setHovering(true)
-  }, [hovering])
+  }, [])
 
   const handleMouseOut = useCallback(() => {
     setHovering(false)
-  }, [hovering])
+  }, [])
 
   const handleDocumentMouseUp = useCallback(
     (e: MouseEvent) => {
@@ -70,7 +70,7 @@ export function useCustomScrollDiv() {
 
     newTop = Math.min(newTop, offsetHeight - scrollBoxHeight)
     setScrollBoxTop(newTop)
-  }, [])
+  }, [scrollBoxHeight])
 
   const scrollHostRef = useRef<HTMLDivElement>(null)
 
@@ -86,7 +86,7 @@ export function useCustomScrollDiv() {
     return function cleanup() {
       scrollHostElement.removeEventListener('scroll', handleScroll, true)
     }
-  }, [])
+  }, [handleScroll])
 
   useEffect(() => {
     document.addEventListener('mousemove', handleDocumentMouseMove)

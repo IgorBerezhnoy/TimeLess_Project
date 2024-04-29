@@ -20,7 +20,7 @@ export const SearchHeader = memo(({ refetch }: Props) => {
     (value: string) => {
       dispatch(searchUser({ search: value.trim() }))
     },
-    [dispatch, search]
+    [dispatch]
   )
 
   return (

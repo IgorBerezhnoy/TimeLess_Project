@@ -1,9 +1,8 @@
-.scrollhost::-webkit-scrollbar {
-  display: none;
-}
+
 
 .scrollhost-container {
   position: relative;
+  width: 1080px;
   height: 100%;
 }
 
@@ -28,7 +27,7 @@
   width: 10px;
   height: 100%;
 
-  background-color: #E8E8E81A;
+  background-color: #e8e8e81a;
   border-radius: 7px;
 }
 
@@ -41,6 +40,6 @@
   margin-left: 1px;
 
   opacity: 1;
-  background-color: #7A7A7A;
+  background-color: #7a7a7a;
   border-radius: 7px;
 }
