@@ -1,10 +1,14 @@
 .userList {
+  scrollbar-width: none;
+
+  overflow-y: auto;
   display: flex;
   flex-wrap: wrap;
   gap: 16px;
   align-content: flex-start;
 
-  width: 1376px;
+  max-width: 1400px;
+  height: 88vh;
 }
 
 @media (width < 768px) {

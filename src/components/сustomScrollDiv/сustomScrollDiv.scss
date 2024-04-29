@@ -1,0 +1,46 @@
+.scrollhost::-webkit-scrollbar {
+  display: none;
+}
+
+.scrollhost-container {
+  position: relative;
+  height: 100%;
+}
+
+.scrollhost {
+  scrollbar-width: none;
+
+  position: relative;
+
+  overflow: auto;
+
+  height: 100%;
+
+  -ms-overflow-style: none;
+}
+
+.scroll-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+
+  width: 10px;
+  height: 100%;
+
+  background-color: #E8E8E81A;
+  border-radius: 7px;
+}
+
+.scroll-thumb {
+  position: absolute;
+  top: 0;
+
+  width: 8px;
+  height: 40px;
+  margin-left: 1px;
+
+  opacity: 1;
+  background-color: #7A7A7A;
+  border-radius: 7px;
+}

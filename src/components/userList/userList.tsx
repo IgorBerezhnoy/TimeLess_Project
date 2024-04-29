@@ -1,6 +1,7 @@
 import { memo } from 'react'
 
 import { UserCard } from '@/components/userCard'
+import { CustomScrollDiv } from '@/components/сustomScrollDiv'
 import { UserType } from '@/services/userApi/user-api.types'
 
 import s from '@/components/userList/userList.module.scss'
@@ -8,7 +9,7 @@ import s from '@/components/userList/userList.module.scss'
 export const UserList = memo(
   ({ activeCard, deleteUserHandler, onClickSetActive, users }: Props) => {
     return (
-      <div className={s.userList}>
+      <CustomScrollDiv className={s.userList}>
         {users.map(el => (
           <UserCard
             activeCard={activeCard === el.login.uuid}
@@ -18,7 +19,7 @@ export const UserList = memo(
             user={el}
           />
         ))}
-      </div>
+      </CustomScrollDiv>
     )
   }
 )
