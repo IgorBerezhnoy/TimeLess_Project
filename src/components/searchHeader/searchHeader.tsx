@@ -18,7 +18,7 @@ export const SearchHeader = memo(({ refetch }: Props) => {
   )
   const onDebouncedChange = useCallback(
     (value: string) => {
-      dispatch(searchUser({ search: value }))
+      dispatch(searchUser({ search: value.trim() }))
     },
     [dispatch, search]
   )

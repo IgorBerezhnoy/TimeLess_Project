@@ -12,12 +12,13 @@ const slice = createSlice({
   reducers: {
     deleteUser(state, action: PayloadAction<{ id: string }>) {
       state.filteredUsers = state.filteredUsers.filter(el => el.login.uuid !== action.payload.id)
-      state.users = state.filteredUsers.filter(el => el.login.uuid !== action.payload.id)
+      state.users = state.users.filter(el => el.login.uuid !== action.payload.id)
     },
     searchUser(state, action: PayloadAction<{ search: string }>) {
       state.filteredUsers = state.users.filter(
         el =>
           el.name.first.includes(action.payload.search) ||
+          el.name.last.includes(action.payload.search) ||
           el.dob.age.toString().includes(action.payload.search) ||
           el.email.includes(action.payload.search) ||
           el.login.username.includes(action.payload.search) ||
